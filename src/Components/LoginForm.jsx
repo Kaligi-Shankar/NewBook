@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-
+import React, { useContext, useState } from 'react';
+import {store} from '../App';
+import {redirect} from 'react-router-dom'
+import { Navigate } from 'react-router-dom';
 
 const LoginForm=()=> {
-
+const [token, setToken]= useContext(store)
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -19,18 +21,25 @@ const LoginForm=()=> {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/login', formData).then(
-      response => {alert(response.data)
-      console.log(response)}
-    ).catch(err => console.error(err))
-
-    
+    axios.post('http://localhost:8000/login', formData)
+      .then((response) => {
+        const data = response.data;
+        setToken(data.token); // Store the token in state if needed
+      })
+      .catch((err) => {
+        console.error(err); // Handle errors gracefully
+      }); 
   };
+
+  if(token){
+
+    return  <Navigate to = "/myprofile"/>
+  }
 
   return (
     <div>
       <h2>Login Form</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} autoComplete='off'>
         
         <div>
           <label htmlFor="email">Email:</label>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 
 const SignupForm=()=> {
-
+const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -19,16 +19,33 @@ const SignupForm=()=> {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/signup', formData).then(
-      response => {alert(response.data)
-      console.log(response)}
-    ).catch(err => console.error(err))
+    if(formData.password !== formData.confirmpassword){
+      setMessage('password and confirm password should be the same')
+    }else{
+      try{
+        const response = await axios.post('http://localhost:8000/signup', formData);
+        if(response.status === 200){
+          setMessage(response.data);
+          setFormData({
+            username: '',
+            email: '',
+            password: '',
+            confirmpassword: ''
+          });
+        }else{
+          setMessage(response.data);
+        }
+      }
+      catch(err){
+        console.log('Error:', err)
+        setMessage(err.response.data);
+      }
+    }
+   
 
-    
   };
-
   return (
     <div>
       <h2>Signup Form</h2>
@@ -67,7 +84,7 @@ const SignupForm=()=> {
           />
         </div>
         <div>
-          <label htmlFor="confirmpassword">Password:</label>
+          <label htmlFor="confirmpassword">Confirm Password:</label>
           <input
             type="password"
             id="confirmpassword"
@@ -79,6 +96,7 @@ const SignupForm=()=> {
         </div>
         <button type="submit">Sign Up</button>
       </form>
+      {message && <p>{message}</p>}
     </div>
   );
 }
