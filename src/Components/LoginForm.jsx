@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import {store} from '../App';
-import {redirect} from 'react-router-dom'
 import { Navigate } from 'react-router-dom';
+import config from '../config'
+const baseurl = config.baseUrl
+
 
 const LoginForm=()=> {
 const [token, setToken]= useContext(store)
@@ -21,7 +23,7 @@ const [token, setToken]= useContext(store)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/login', formData)
+    axios.post(`${baseurl}/login`, formData)
       .then((response) => {
         const data = response.data;
         setToken(data.token); // Store the token in state if needed
