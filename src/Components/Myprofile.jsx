@@ -2,13 +2,15 @@ import React, {useContext, useState, useEffect} from 'react'
 import {store} from'../App';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
+import config from '../config'
+const baseurl = config.baseUrl
 
 
 const Myprofile = () => {
     const [token, setToken]= useContext(store)
     const [userData, setUserData] = useState(null);
     useEffect(()=>{
-        axios.get('http://localhost:8000/myprofile', {
+        axios.get(`${baseurl}/myprofile`, {
             headers: {
                 'x-token': token,
             }
