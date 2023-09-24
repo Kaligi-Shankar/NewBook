@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import config from '../config'
+const baseurl = config.baseUrl
 
 
 const SignupForm=()=> {
@@ -25,8 +27,7 @@ const [message, setMessage] = useState('');
       setMessage('password and confirm password should be the same')
     }else{
       try{
-        const response = await axios.post('http://localhost:8000/signup', formData);
-        console.log("response",response)
+        const response = await axios.post(`${baseurl}/signup`, formData);
         if(response.status === 200){
           setMessage(response.data);
           setFormData({

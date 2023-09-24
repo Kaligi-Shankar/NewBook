@@ -1,8 +1,12 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import {store} from '../App';
-import {redirect} from 'react-router-dom'
+import './login.css'
+import { Link } from "react-router-dom";
 import { Navigate } from 'react-router-dom';
+import config from '../config'
+const baseurl = config.baseUrl
+
 
 const LoginForm=()=> {
 const [token, setToken]= useContext(store)
@@ -21,7 +25,7 @@ const [token, setToken]= useContext(store)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/login', formData)
+    axios.post(`${baseurl}/login`, formData)
       .then((response) => {
         const data = response.data;
         setToken(data.token); // Store the token in state if needed
@@ -38,34 +42,45 @@ const [token, setToken]= useContext(store)
 
   return (
     <div>
-      <h2>Login Form</h2>
-      <form onSubmit={handleSubmit} autoComplete='off'>
-        
+      <div className='grid-container'>
+      <div className='grid1'>
+        <span>Sign in</span>
+        <p> Use your account</p>
+        <form onSubmit={handleSubmit} autoComplete='off'>
         <div>
-          <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
             name="email"
+            placeholder='Email'
             value={formData.email}
             onChange={handleChange}
             required
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
             name="password"
+            placeholder='Password'
             value={formData.password}
             onChange={handleChange}
             required
           />
         </div>
-        
-        <button type="submit">Login</button>
+        <div>
+        <p>Forgot your password</p>
+        <button type="submit">SIGN IN</button>
+        </div>
       </form>
+      </div>
+      <div className='grid2'>
+        <span>Hello, Friend!</span>
+        <p>Enter your personal details and start journey with us</p>
+        <Link to={'/signup'}><button>SIGN UP</button></Link>
+      </div>
+      </div>
     </div>
   );
 }
