@@ -1,3 +1,17 @@
 .Nav-Container{
-    background-color: darkcyan;
+    background-color: #2f1793;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+.Nav-Container span{
+    text-decoration: none;
+    color: white;
+    font-size: 20px
+}
+.Nav-right{
+    display: flex;
+    gap: 20px;
 }
