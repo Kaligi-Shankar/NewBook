@@ -26,6 +26,7 @@ const [message, setMessage] = useState('');
     }else{
       try{
         const response = await axios.post('http://localhost:8000/signup', formData);
+        console.log("response",response)
         if(response.status === 200){
           setMessage(response.data);
           setFormData({
