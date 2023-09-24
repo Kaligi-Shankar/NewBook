@@ -8,11 +8,11 @@ const NavBar = () => {
 
   return (
     <div className='Nav-Container'>
-        <div><Link to={'/'}>Home</Link></div>
+        <div><Link to={'/'}><span>BLOOD BOOK</span></Link></div>
         {!token && 
-        <div>
-        <Link to={'/login'}>Login</Link>
-        <Link to={'/signup'}>SignUp</Link>
+        <div className="Nav-right">
+        <Link to={'/login'}><span>Sign in</span></Link>
+        <Link to={'/signup'}><span>SignUp</span></Link>
     </div>
         }
         

@@ -1,0 +1,72 @@
+.grid-container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 25px 180px;
+}
+.grid-container > div:first-child {
+    background: white;
+    height: 84vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 80px;
+    border-radius: 10px 0 0 10px;
+  }
+  .grid-container > div:nth-child(2) {
+    background: linear-gradient(270deg, rgba(250,84,129,1) 0%, rgba(235,59,59,1) 100%);
+    border-radius: 0px 10px 10px 0px;
+    height: 84vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 80px;
+    gap: 20px;
+  }
+  .grid1 input{
+    width: 20vw;
+    height: 30px;
+    background: #f2f2f2;
+  }
+  .grid1 form{
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+  }
+  .grid1 button{
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #ff3203;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
+  }
+  .grid1 > span:first-child{
+    font-size: 40px;
+    font-weight: 700;
+  }
+  .grid2 span{
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .grid2 p{
+    color: white;
+    font-size: 18px;
+  }
+  .grid2 button{
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #f2465a;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    border: 2px solid white;
+    cursor: pointer;
+  }
