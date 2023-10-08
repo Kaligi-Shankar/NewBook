@@ -108,6 +108,20 @@
     text-decoration: none;
     color: #333; /* Icon color */
   }
-  .socialIcon:{
+  .socialIcon{
     font-size: medium;
+  }
+  .sign-button-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  .sign-button-section a{
+    text-decoration: none;
+    color: black;
+  }
+  .sign-button-section a:hover{
+    color: blue;
   }

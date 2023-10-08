@@ -5,6 +5,7 @@ import Login from './Components/LoginForm';
 import SignUpForm from './Components/SignupForm';
 import Home from './Components/Home';
 import Myprofile from './Components/Myprofile';
+import ForgetPassword from './Components/ForgetPassword';
 
 const NavBar = React.lazy(()=>import('./Components/NavBar'))
 
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/login" element={<Login/>} />
           <Route exact path="/signup" element={<SignUpForm/>} />
           <Route exact path="/myprofile" element={<Myprofile/>} />
+          <Route exact path="/forgetPassword" element={<ForgetPassword/>} />
         </Routes>
         </div>
     </div>
