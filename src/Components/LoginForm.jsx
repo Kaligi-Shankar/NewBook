@@ -4,6 +4,9 @@ import {store} from '../App';
 import './login.css'
 import { Link } from "react-router-dom";
 import { Navigate } from 'react-router-dom';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import MailOutlineIcon from '@mui/icons-material/MailOutline'
 import config from '../config'
 const baseurl = config.baseUrl
 
@@ -45,6 +48,11 @@ const [token, setToken]= useContext(store)
       <div className='grid-container'>
       <div className='grid1'>
         <span>Sign in</span>
+        <div className='icon-grid'>
+            <a href='https://www.facebook.com'><FacebookIcon  className='socialIcon'/></a>
+            <a href='https://www.gmail.com'><MailOutlineIcon className='socialIcon' /></a>
+            <a href='https://www.linkedin.com'><LinkedInIcon className='socialIcon' /></a>
+          </div>
         <p> Use your account</p>
         <form onSubmit={handleSubmit} autoComplete='off'>
         <div>
@@ -69,8 +77,8 @@ const [token, setToken]= useContext(store)
             required
           />
         </div>
-        <div>
-        <p>Forgot your password</p>
+        <div className='sign-button-section'>
+        <a href='/forgetPassword'>Forgot your password?</a>
         <button type="submit">SIGN IN</button>
         </div>
       </form>
